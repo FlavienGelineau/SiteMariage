@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Contact - Lise & Flavien</title>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Parisienne&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Parisienne&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -19,32 +19,23 @@
       padding: 15px 30px;
       position: fixed;
       width: 100%;
+      top: 0;
+      left: 0;
       z-index: 1000;
       box-shadow: 0 2px 6px rgba(0,0,0,0.05);
       display: flex;
+      flex-direction: column;
+    }
+
+    .nav-header {
+      width: 100%;
+      display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
     }
 
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      gap: 15px;
-      transition: max-height 0.4s ease;
-    }
-
-    nav img {
+    .nav-header img {
       height: 30px;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #4a6b48;
-      font-weight: 600;
-      font-size: 16px;
     }
 
     .burger {
@@ -57,32 +48,29 @@
       width: 25px;
       height: 3px;
       background-color: #4a6b48;
-      margin: 4px;
+      margin: 4px 0;
       transition: all 0.3s ease;
     }
 
-    .nav-active {
-      display: flex !important;
-      flex-direction: column;
-      width: 100%;
-      margin-top: 10px;
-      gap: 10px;
-      animation: slideDown 0.3s ease forwards;
+    .nav-links {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding-top: 10px;
     }
 
-    @keyframes slideDown {
-      from {
-        opacity: 0;
-        transform: translateY(-10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .nav-links a {
+      text-decoration: none;
+      color: #4a6b48;
+      font-weight: 600;
+      font-size: 16px;
+      padding: 5px 10px;
     }
 
     .content {
-      padding: 100px 20px 60px;
+      padding: 120px 20px 60px;
       text-align: center;
     }
 
@@ -111,35 +99,51 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
-    @media (max-width: 768px) {
+    /* Responsive */
+    @media (max-width: 1000px) {
+      .burger {
+        display: flex !important;
+        padding-right: 60px;
+      }
+
       .nav-links {
         display: none;
         width: 100%;
         flex-direction: column;
+        align-items: center;
+        background-color: white;
+        padding-bottom: 10px;
       }
 
-      .burger {
+      .nav-links a {
+        padding: 10px 0;
+        width: 100%;
+        text-align: center;
+        border-top: 1px solid #e0e0e0;
+      }
+
+      .nav-links.nav-active {
         display: flex;
+        animation: slideDown 0.3s ease-in-out;
       }
 
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      nav img {
-        margin-bottom: 10px;
+      @keyframes slideDown {
+        from {opacity: 0; transform: translateY(-10px);}
+        to {opacity: 1; transform: translateY(0);}
       }
     }
   </style>
 </head>
 <body>
+
   <nav>
-    <img src="bague.jpg" alt="Bagues entrelacées">
-    <div class="burger" onclick="toggleMenu()">
-      <div></div>
-      <div></div>
-      <div></div>
+    <div class="nav-header">
+      <img src="bague.jpg" alt="Bagues entrelacées">
+      <div class="burger" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
     <div class="nav-links" id="navLinks">
       <a href="index.html">Accueil</a>    
@@ -168,8 +172,7 @@
 
   <script>
     function toggleMenu() {
-      const navLinks = document.getElementById('navLinks');
-      navLinks.classList.toggle('nav-active');
+      document.getElementById('navLinks').classList.toggle('nav-active');
     }
   </script>
 </body>

@@ -14,7 +14,6 @@
       font-family: 'Playfair Display', serif;
     }
 
-    /* === NAVIGATION === */
     nav {
       background-color: white;
       padding: 15px 30px;
@@ -25,32 +24,20 @@
       z-index: 1000;
       box-shadow: 0 2px 6px rgba(0,0,0,0.05);
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
+      flex-direction: column;
     }
 
-    nav img {
+    .nav-header {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-header img {
       height: 30px;
     }
 
-    .nav-links {
-      display: flex;
-      gap: 15px;
-      align-items: center;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: #4a6b48;
-      font-weight: 600;
-      font-size: 16px;
-      padding: 5px 10px;
-    }
-
-    /* === BURGER === */
     .burger {
       display: none;
       flex-direction: column;
@@ -65,9 +52,25 @@
       transition: all 0.3s ease;
     }
 
-    /* === CONTENU === */
+    .nav-links {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding-top: 10px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #4a6b48;
+      font-weight: 600;
+      font-size: 16px;
+      padding: 5px 10px;
+    }
+
     .content {
-      padding: 100px 20px 60px;
+      padding: 120px 20px 60px;
       text-align: center;
     }
 
@@ -101,10 +104,10 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
-    /* === RESPONSIVE === */
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1000px) {
       .burger {
-        display: flex;
+        display: flex !important;
+        padding-right: 60px;
       }
 
       .nav-links {
@@ -132,17 +135,13 @@
         from {opacity: 0; transform: translateY(-10px);}
         to {opacity: 1; transform: translateY(0);}
       }
-
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
     }
   </style>
 </head>
 <body>
+
   <nav>
-    <div style="display: flex; align-items: center; gap: 10px;">
+    <div class="nav-header">
       <img src="bague.jpg" alt="Bagues entrelacées">
       <div class="burger" onclick="toggleMenu()">
         <div></div>
@@ -167,8 +166,9 @@
     <p>Cette page accueillera les plus belles photos de notre mariage, dès qu'elles seront prêtes à être partagées 📸</p>
 
     <div class="gallery">
-      <!-- Ajoute ici tes images comme ci-dessous -->
-      <!-- <img src="photo1.jpg" alt="Photo 1"> -->
+      <!-- Exemple d’image :
+      <img src="photo1.jpg" alt="Souvenir 1">
+      <img src="photo2.jpg" alt="Souvenir 2"> -->
     </div>
   </div>
 
