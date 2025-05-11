@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Lise & Flavien - Mariage</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Parisienne&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #eaf4ec;
+      color: #4a6b48;
+      font-family: 'Playfair Display', serif;
+    }
+
+    nav {
+      background-color: white;
+      padding: 20px;
+      text-align: center;
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    nav img {
+      height: 30px;
+    }
+
+    nav a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #4a6b48;
+      font-weight: 600;
+    }
+
+    .main {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      padding: 140px 40px 60px;
+      gap: 40px;
+      position: relative;
+    }
+
+    .left {
+      flex: 1;
+      max-width: 400px;
+      border: 5px solid #c9a646;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .left img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .right {
+      flex: 1;
+      max-width: 500px;
+      text-align: left;
+    }
+    .noms {
+      font-family: 'Dancing Script', cursive;
+      font-weight: 700;
+      font-style: italic;
+    }
+
+    .esperluette {
+      font-family: 'Parisienne', cursive;
+      font-style: italic; 
+      font-weight: 700;
+      padding: 0 5px; 
+    
+    }
+    .right h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 52px;
+      color: #c9a646;
+      margin-bottom: 10px;
+      text-align: center;
+      font-style: italic;
+  
+    }
+    .right p {
+      font-size: 18px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .event-info {
+      font-size: 18px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .event-info span {
+      display: block;
+      margin: 10px 0;
+    }
+
+    .event-info strong {
+      color: #4a6b48;
+    }
+
+    .event-info a {
+      color: #4a6b48;
+      text-decoration: underline;
+    }
+
+    .countdown {
+      font-weight: bold;
+      margin-top: 30px;
+      font-size: 20px;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      margin: 30px 0 50px;
+      font-style: italic;
+      color: #7a947a;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <img src="bague.jpg" alt="Bagues entrelacées">
+    <a href="index.html">Accueil</a>    
+    <a href="histoire.html">Notre Histoire</a>
+    <a href="map.html">Comment s'y rendre</a>
+    <a href="infos.html">Infos pratiques</a>
+    <a href="hebergements.html">Hébergements</a>
+    <a href="cagnotte.html">Cagnotte</a>
+    <a href="galerie.html">Souvenirs et photos</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <div class="main">
+    <div class="left">
+      <img src="fiancailles_high_res.jpg" alt="Lise et Flavien">
+    </div>
+
+    <div class="right">
+      <h1>
+        <span class="noms">Lise </span>
+        <span class="esperluette">&amp;</span>
+        <span class="noms"> Flavien</span>
+      </h1>
+      <p>C’est avec une immense joie que nous vous invitons à la célébration de notre mariage.</p>
+
+      <div class="event-info">
+        <span><strong>Date :</strong> Samedi 12 juillet 2025</span>
+        <span><strong>Cérémonie :</strong> 14h30 à l'Église Saint Chrysole, Verlinghem</span>
+        <span><a href="#map">Voir le plan d'accès</a></span>
+      </div>
+
+      <div class="countdown" id="countdown"></div>
+
+    </div>
+  </div>
+
+  <footer>Un sceau, un ruban, et nos cœurs unis pour la vie 🌿</footer>
+
+  <script>
+    function countdown() {
+      const weddingDate = new Date("2025-07-12T14:00:00").getTime();
+      setInterval(function () {
+        let now = new Date().getTime();
+        let timeLeft = weddingDate - now;
+        let days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+        let hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        let minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        let seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+        document.getElementById("countdown").innerHTML = `${days}j : ${hours}h : ${minutes}m : ${seconds}s`;
+      }, 1000);
+    }
+    countdown();
+  </script>
+
+</body>
+</html>

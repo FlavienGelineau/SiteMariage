@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Souvenirs et photos - Lise & Flavien</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Parisienne&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #eaf4ec;
+        color: #4a6b48;
+        font-family: 'Playfair Display', serif;
+    }
+
+    nav {
+        background-color: white;
+        padding: 20px;
+        text-align: center;
+        position: fixed;
+        width: 100%;
+        z-index: 1000;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+    }
+
+
+    nav img {
+      height: 30px;
+    }
+
+    nav a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #4a6b48;
+      font-weight: 600;
+    }
+
+    .content {
+      padding: 100px 20px 60px;
+      text-align: center;
+    }
+
+    h2 {
+        font-family: 'Dancing Script', cursive;
+        font-size: 40px;
+        color: #c9a646;
+        margin-bottom: 20px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      border: 4px solid #c9a646;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+    <nav>
+        <img src="bague.jpg" alt="Bagues entrelacées">
+        <a href="index.html">Accueil</a>    
+        <a href="histoire.html">Notre Histoire</a>
+        <a href="map.html">Comment s'y rendre</a>
+        <a href="infos.html">Infos pratiques</a>
+        <a href="hebergements.html">Hébergements</a>
+        <a href="cagnotte.html">Cagnotte</a>
+        <a href="galerie.html">Souvenirs et photos</a>
+        <a href="contact.html">Contact</a>
+    </nav> 
+
+  <div class="content">
+    <h2>Souvenirs et photos</h2>
+    <p>Cette page accueillera les plus belles photos de notre mariage, dès qu'elles seront prêtes à être partagées 📸</p>
+
+    <div class="gallery">
+
+    </div>
+  </div>
+</body>
+</html>
