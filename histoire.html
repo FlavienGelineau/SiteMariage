@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Notre Histoire - Lise & Flavien</title>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Parisienne&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Parisienne&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -19,32 +19,23 @@
       padding: 15px 30px;
       position: fixed;
       width: 100%;
+      top: 0;
+      left: 0;
       z-index: 1000;
       box-shadow: 0 2px 6px rgba(0,0,0,0.05);
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
+      flex-direction: column;
     }
 
-    .nav-links {
+    .nav-header {
+      width: 100%;
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      gap: 15px;
-      transition: max-height 0.4s ease;
     }
 
-    nav img {
+    .nav-header img {
       height: 30px;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #4a6b48;
-      font-weight: 600;
-      font-size: 16px;
     }
 
     .burger {
@@ -57,48 +48,44 @@
       width: 25px;
       height: 3px;
       background-color: #4a6b48;
-      margin: 4px;
+      margin: 4px 0;
       transition: all 0.3s ease;
     }
 
-    .nav-active {
-      display: flex !important;
-      flex-direction: column;
-      width: 100%;
-      margin-top: 10px;
-      gap: 10px;
-      animation: slideDown 0.3s ease forwards;
+    .nav-links {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding-top: 10px;
     }
 
-    @keyframes slideDown {
-      from {
-        opacity: 0;
-        transform: translateY(-10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .nav-links a {
+      text-decoration: none;
+      color: #4a6b48;
+      font-weight: 600;
+      font-size: 16px;
+      padding: 5px 10px;
     }
 
     .content {
-      padding: 100px 40px 40px;
+      padding: 120px 20px 60px;
       text-align: center;
     }
 
-    .content h2 {
+    h2 {
       font-family: 'Dancing Script', cursive;
       font-size: 40px;
       color: #c9a646;
       margin-bottom: 20px;
     }
 
-    .content p {
+    p {
       max-width: 800px;
       margin: 0 auto;
       font-size: 18px;
       line-height: 1.6;
-      color: #4a6b48;
     }
 
     .photo-container {
@@ -115,36 +102,51 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
-    @media (max-width: 768px) {
+    @media screen and (max-width: 1000px) {
+      .burger {
+        display: flex !important;
+        padding-right: 60px;
+      }
+
       .nav-links {
         display: none;
         width: 100%;
         flex-direction: column;
+        align-items: center;
+        background-color: white;
+        padding-bottom: 10px;
       }
 
-      .burger {
+      .nav-links a {
+        padding: 10px 0;
+        width: 100%;
+        text-align: center;
+        border-top: 1px solid #e0e0e0;
+      }
+
+      .nav-links.active {
         display: flex;
+        animation: slideDown 0.3s ease-in-out;
       }
 
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      nav img {
-        margin-bottom: 10px;
+      @keyframes slideDown {
+        from {opacity: 0; transform: translateY(-10px);}
+        to {opacity: 1; transform: translateY(0);}
       }
     }
   </style>
 </head>
 <body>
+
   <!-- BARRE DE NAVIGATION -->
   <nav>
-    <img src="bague.jpg" alt="Bagues entrelacées">
-    <div class="burger" onclick="toggleMenu()">
-      <div></div>
-      <div></div>
-      <div></div>
+    <div class="nav-header">
+      <img src="bague.jpg" alt="Bagues entrelacées">
+      <div class="burger" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
     <div class="nav-links" id="navLinks">
       <a href="index.html">Accueil</a>    
@@ -167,11 +169,10 @@
       Voilà maintenant <strong>7 ans</strong> que nous partageons notre quotidien, nos rêves, nos voyages et nos projets.<br><br>
       Nous nous sommes <strong>PACSés le 29 juillet 2023</strong>, une belle étape dans notre histoire d’amour.<br>
       Puis, le <strong>06 mai 2024</strong>, nous nous sommes <strong>fiancés</strong> lors d’un moment inoubliable.<br><br>
-      Le <strong> 12 juillet 2025</strong>, c’est avec émotion et tendresse que nous allons <strong>nous dire “oui”</strong>,
+      Le <strong>12 juillet 2025</strong>, c’est avec émotion et tendresse que nous allons <strong>nous dire “oui”</strong>,
       entourés de celles et ceux qui comptent le plus pour nous.
     </p>
 
-    <!-- PHOTO CENTRÉE ENCADRÉE -->
     <div class="photo-container">
       <img src="fiancailles_mariage.jpg" alt="Souvenir de notre histoire">
     </div>
@@ -179,9 +180,9 @@
 
   <script>
     function toggleMenu() {
-      const navLinks = document.getElementById('navLinks');
-      navLinks.classList.toggle('nav-active');
+      document.getElementById('navLinks').classList.toggle('active');
     }
   </script>
+
 </body>
 </html>

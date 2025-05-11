@@ -14,10 +14,9 @@
       font-family: 'Playfair Display', serif;
     }
 
-    /* === NAVIGATION === */
     nav {
       background-color: white;
-      padding: 20px;
+      padding: 15px 30px;
       position: fixed;
       width: 100%;
       top: 0;
@@ -25,39 +24,24 @@
       z-index: 1000;
       box-shadow: 0 2px 6px rgba(0,0,0,0.05);
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
+      flex-direction: column;
     }
 
-    nav img {
-      height: 30px;
-      margin-left: 20px;
-    }
-
-    .nav-links {
+    .nav-header {
+      width: 100%;
       display: flex;
-      gap: 15px;
+      justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 10px 20px;
     }
 
-    .nav-links a {
-      text-decoration: none;
-      color: #4a6b48;
-      font-weight: 600;
-      font-size: 16px;
-      padding: 5px 10px;
+    .nav-header img {
+      height: 30px;
     }
 
-    /* === BURGER === */
     .burger {
       display: none;
       flex-direction: column;
       cursor: pointer;
-      margin-right: 20px;
     }
 
     .burger div {
@@ -68,13 +52,29 @@
       transition: all 0.3s ease;
     }
 
-    /* === MAIN === */
+    .nav-links {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding-top: 10px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #4a6b48;
+      font-weight: 600;
+      font-size: 16px;
+      padding: 5px 10px;
+    }
+
     .main {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       align-items: flex-start;
-      padding: 140px 20px 60px;
+      padding: 120px 20px 60px;
       gap: 30px;
     }
 
@@ -162,8 +162,37 @@
       color: #7a947a;
     }
 
-    /* === RESPONSIVE === */
     @media screen and (max-width: 768px) {
+      .burger {
+        display: flex;
+      }
+
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        background-color: white;
+        padding-bottom: 10px;
+      }
+
+      .nav-links a {
+        padding: 10px 0;
+        width: 100%;
+        text-align: center;
+        border-top: 1px solid #e0e0e0;
+      }
+
+      .nav-links.active {
+        display: flex;
+        animation: slideDown 0.3s ease-in-out;
+      }
+
+      @keyframes slideDown {
+        from {opacity: 0; transform: translateY(-10px);}
+        to {opacity: 1; transform: translateY(0);}
+      }
+
       .main {
         flex-direction: column-reverse;
         padding: 120px 15px 40px;
@@ -181,39 +210,19 @@
       .countdown {
         font-size: 18px;
       }
-
-      .burger {
-        display: flex;
-      }
-
-      .nav-links {
-        width: 100%;
-        display: none;
-        flex-direction: column;
-        background-color: white;
-        padding-bottom: 15px;
-      }
-
-      .nav-links.active {
-        display: flex;
-        animation: slideDown 0.3s ease-in-out;
-      }
-
-      @keyframes slideDown {
-        from {opacity: 0; transform: translateY(-10px);}
-        to {opacity: 1; transform: translateY(0);}
-      }
     }
   </style>
 </head>
 <body>
 
   <nav>
-    <img src="bague.jpg" alt="Bagues entrelacées">
-    <div class="burger" onclick="toggleMenu()">
-      <div></div>
-      <div></div>
-      <div></div>
+    <div class="nav-header">
+      <img src="bague.jpg" alt="Bagues entrelacées">
+      <div class="burger" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
     <div class="nav-links" id="navLinks">
       <a href="index.html">Accueil</a>    

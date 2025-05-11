@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Informations pratiques - Lise & Flavien</title>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Parisienne&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Parisienne&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -19,31 +19,23 @@
       padding: 15px 30px;
       position: fixed;
       width: 100%;
+      top: 0;
+      left: 0;
       z-index: 1000;
       box-shadow: 0 2px 6px rgba(0,0,0,0.05);
       display: flex;
+      flex-direction: column;
+    }
+
+    .nav-header {
+      width: 100%;
+      display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
     }
 
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      gap: 15px;
-    }
-
-    nav img {
+    .nav-header img {
       height: 30px;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #4a6b48;
-      font-weight: 600;
-      font-size: 16px;
     }
 
     .burger {
@@ -56,20 +48,29 @@
       width: 25px;
       height: 3px;
       background-color: #4a6b48;
-      margin: 4px;
+      margin: 4px 0;
       transition: all 0.3s ease;
     }
 
-    .nav-active {
-      display: flex !important;
-      flex-direction: column;
-      width: 100%;
-      margin-top: 10px;
-      gap: 10px;
+    .nav-links {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding-top: 10px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #4a6b48;
+      font-weight: 600;
+      font-size: 16px;
+      padding: 5px 10px;
     }
 
     .content {
-      padding: 100px 20px 60px;
+      padding: 120px 20px 60px;
       text-align: center;
       max-width: 1100px;
       margin: 0 auto;
@@ -119,14 +120,6 @@
       margin: 0 auto;
     }
 
-    .allergy-box textarea {
-      width: 100%;
-      padding: 10px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-family: 'Playfair Display', serif;
-    }
-
     .allergy-box button {
       background-color: #c9a646;
       color: white;
@@ -143,24 +136,53 @@
     }
 
     @media (max-width: 768px) {
+      .burger {
+        display: flex;
+      }
+
       .nav-links {
         display: none;
         width: 100%;
+        flex-direction: column;
+        align-items: center;
+        background-color: white;
+        padding-bottom: 10px;
       }
 
-      .burger {
+      .nav-links a {
+        padding: 10px 0;
+        width: 100%;
+        text-align: center;
+        border-top: 1px solid #e0e0e0;
+      }
+
+      .nav-links.active {
         display: flex;
+        animation: slideDown 0.3s ease-in-out;
+      }
+
+      @keyframes slideDown {
+        from {opacity: 0; transform: translateY(-10px);}
+        to {opacity: 1; transform: translateY(0);}
+      }
+
+      .content {
+        flex-direction: column;
+        padding: 120px 15px 40px;
       }
     }
   </style>
 </head>
 <body>
+
   <nav>
-    <img src="bague.jpg" alt="Bagues entrelacées">
-    <div class="burger" onclick="toggleMenu()">
-      <div></div>
-      <div></div>
-      <div></div>
+    <div class="nav-header">
+      <img src="bague.jpg" alt="Bagues entrelacées">
+      <div class="burger" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
     <div class="nav-links" id="navLinks">
       <a href="index.html">Accueil</a>
@@ -180,7 +202,7 @@
       <ul>
         <li>La cérémonie religieuse commencera à 14h30 précise à l'Église Saint Chrysole à Verlinghem.</li>
         <li>Merci d'arriver au moins 15 minutes en avance pour faciliter l'installation.</li>
-        <li>Un livret de cérémonie sera disponible sur chaque chaise de l'Eglise</li>
+        <li>Un livret de cérémonie sera disponible sur chaque chaise de l'Eglise.</li>
       </ul>
     </section>
 
@@ -220,9 +242,9 @@
 
   <script>
     function toggleMenu() {
-      const navLinks = document.getElementById('navLinks');
-      navLinks.classList.toggle('nav-active');
+      document.getElementById('navLinks').classList.toggle('active');
     }
   </script>
+
 </body>
 </html>
