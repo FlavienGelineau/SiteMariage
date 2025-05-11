@@ -14,45 +14,75 @@
       font-family: 'Playfair Display', serif;
     }
 
+    /* === NAVIGATION === */
     nav {
       background-color: white;
       padding: 20px;
-      text-align: center;
       position: fixed;
       width: 100%;
+      top: 0;
+      left: 0;
       z-index: 1000;
       box-shadow: 0 2px 6px rgba(0,0,0,0.05);
       display: flex;
-      flex-wrap: wrap;
       align-items: center;
-      justify-content: center;
-      gap: 15px;
+      justify-content: space-between;
+      flex-wrap: wrap;
     }
 
     nav img {
       height: 30px;
+      margin-left: 20px;
     }
 
-    nav a {
-      margin: 0 10px;
+    .nav-links {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 10px 20px;
+    }
+
+    .nav-links a {
       text-decoration: none;
       color: #4a6b48;
       font-weight: 600;
       font-size: 16px;
+      padding: 5px 10px;
     }
 
+    /* === BURGER === */
+    .burger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      margin-right: 20px;
+    }
+
+    .burger div {
+      width: 25px;
+      height: 3px;
+      background-color: #4a6b48;
+      margin: 4px 0;
+      transition: all 0.3s ease;
+    }
+
+    /* === MAIN === */
     .main {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       align-items: flex-start;
-      padding: 140px 40px 60px;
-      gap: 40px;
+      padding: 140px 20px 60px;
+      gap: 30px;
     }
 
     .left {
       flex: 1 1 300px;
-      max-width: 400px;
+      max-width: 450px;
+      width: 100%;
+      box-sizing: border-box;
       border: 5px solid #c9a646;
       border-radius: 12px;
       overflow: hidden;
@@ -63,12 +93,15 @@
       width: 100%;
       height: auto;
       display: block;
+      object-fit: contain;
     }
 
     .right {
       flex: 1 1 300px;
       max-width: 500px;
-      text-align: left;
+      width: 100%;
+      text-align: center;
+      box-sizing: border-box;
     }
 
     .noms {
@@ -79,9 +112,9 @@
 
     .esperluette {
       font-family: 'Parisienne', cursive;
-      font-style: italic; 
+      font-style: italic;
       font-weight: 700;
-      padding: 0 5px; 
+      padding: 0 5px;
     }
 
     .right h1 {
@@ -89,19 +122,16 @@
       font-size: 52px;
       color: #c9a646;
       margin-bottom: 10px;
-      text-align: center;
       font-style: italic;
     }
 
     .right p {
       font-size: 18px;
       margin-bottom: 20px;
-      text-align: center;
     }
 
     .event-info {
       font-size: 18px;
-      text-align: center;
       margin-bottom: 20px;
     }
 
@@ -123,30 +153,20 @@
       font-weight: bold;
       margin-top: 30px;
       font-size: 20px;
-      text-align: center;
     }
 
     footer {
       text-align: center;
-      margin: 30px 0 50px;
+      margin: 30px 20px 50px;
       font-style: italic;
       color: #7a947a;
     }
 
+    /* === RESPONSIVE === */
     @media screen and (max-width: 768px) {
-      nav {
-        flex-direction: column;
-        gap: 10px;
-        padding: 15px;
-      }
-
-      nav a {
-        font-size: 14px;
-      }
-
       .main {
-        flex-direction: column;
-        padding: 120px 20px 40px;
+        flex-direction: column-reverse;
+        padding: 120px 15px 40px;
       }
 
       .right h1 {
@@ -156,34 +176,55 @@
       .right p,
       .event-info {
         font-size: 16px;
-        padding: 0 10px;
-      }
-
-      .event-info span {
-        margin: 6px 0;
       }
 
       .countdown {
         font-size: 18px;
       }
 
-      footer {
-        padding: 0 10px;
+      .burger {
+        display: flex;
+      }
+
+      .nav-links {
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        background-color: white;
+        padding-bottom: 15px;
+      }
+
+      .nav-links.active {
+        display: flex;
+        animation: slideDown 0.3s ease-in-out;
+      }
+
+      @keyframes slideDown {
+        from {opacity: 0; transform: translateY(-10px);}
+        to {opacity: 1; transform: translateY(0);}
       }
     }
   </style>
 </head>
 <body>
+
   <nav>
     <img src="bague.jpg" alt="Bagues entrelacées">
-    <a href="index.html">Accueil</a>    
-    <a href="histoire.html">Notre Histoire</a>
-    <a href="map.html">Comment s'y rendre</a>
-    <a href="infos.html">Infos pratiques</a>
-    <a href="hebergements.html">Hébergements</a>
-    <a href="cagnotte.html">Cagnotte</a>
-    <a href="galerie.html">Souvenirs et photos</a>
-    <a href="contact.html">Contact</a>
+    <div class="burger" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Accueil</a>    
+      <a href="histoire.html">Notre Histoire</a>
+      <a href="map.html">Comment s'y rendre</a>
+      <a href="infos.html">Infos pratiques</a>
+      <a href="hebergements.html">Hébergements</a>
+      <a href="cagnotte.html">Cagnotte</a>
+      <a href="galerie.html">Souvenirs et photos</a>
+      <a href="contact.html">Contact</a>
+    </div>
   </nav>
 
   <div class="main">
@@ -212,6 +253,10 @@
   <footer>Un sceau, un ruban, et nos cœurs unis pour la vie 🌿</footer>
 
   <script>
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('active');
+    }
+
     function countdown() {
       const weddingDate = new Date("2025-07-12T14:00:00").getTime();
       setInterval(function () {

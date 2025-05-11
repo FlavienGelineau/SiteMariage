@@ -9,7 +9,7 @@
     body {
       margin: 0;
       padding: 0;
-      background-color: #eaf4ec; /* Vert clair végétal */
+      background-color: #eaf4ec;
       color: #4a6b48;
       font-family: 'Playfair Display', serif;
     }
@@ -17,15 +17,23 @@
     nav {
       background-color: white;
       padding: 15px 30px;
-      text-align: center;
       position: fixed;
       width: 100%;
       z-index: 1000;
       box-shadow: 0 2px 6px rgba(0,0,0,0.05);
       display: flex;
       align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
       justify-content: center;
-      gap: 20px;
+      align-items: center;
+      gap: 15px;
+      transition: max-height 0.4s ease;
     }
 
     nav img {
@@ -33,14 +41,48 @@
     }
 
     nav a {
-      margin: 0 10px;
       text-decoration: none;
       color: #4a6b48;
       font-weight: 600;
+      font-size: 16px;
+    }
+
+    .burger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .burger div {
+      width: 25px;
+      height: 3px;
+      background-color: #4a6b48;
+      margin: 4px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-active {
+      display: flex !important;
+      flex-direction: column;
+      width: 100%;
+      margin-top: 10px;
+      gap: 10px;
+      animation: slideDown 0.3s ease forwards;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .content {
-      padding: 60px 40px 40px;
+      padding: 100px 40px 40px;
       text-align: center;
     }
 
@@ -72,22 +114,49 @@
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+      }
+
+      .burger {
+        display: flex;
+      }
+
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav img {
+        margin-bottom: 10px;
+      }
+    }
   </style>
 </head>
 <body>
   <!-- BARRE DE NAVIGATION -->
   <nav>
     <img src="bague.jpg" alt="Bagues entrelacées">
-    <a href="index.html">Accueil</a>    
-    <a href="histoire.html">Notre Histoire</a>
-    <a href="map.html">Comment s'y rendre</a>
-    <a href="infos.html">Infos pratiques</a>
-    <a href="hebergements.html">Hébergements</a>
-    <a href="cagnotte.html">Cagnotte</a>
-    <a href="galerie.html">Souvenirs et photos</a>
-    <a href="contact.html">Contact</a>
+    <div class="burger" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Accueil</a>    
+      <a href="histoire.html">Notre Histoire</a>
+      <a href="map.html">Comment s'y rendre</a>
+      <a href="infos.html">Infos pratiques</a>
+      <a href="hebergements.html">Hébergements</a>
+      <a href="cagnotte.html">Cagnotte</a>
+      <a href="galerie.html">Souvenirs et photos</a>
+      <a href="contact.html">Contact</a>
+    </div>
   </nav>
-
 
   <!-- CONTENU PRINCIPAL -->
   <div class="content">
@@ -108,5 +177,11 @@
     </div>
   </div>
 
+  <script>
+    function toggleMenu() {
+      const navLinks = document.getElementById('navLinks');
+      navLinks.classList.toggle('nav-active');
+    }
+  </script>
 </body>
 </html>
