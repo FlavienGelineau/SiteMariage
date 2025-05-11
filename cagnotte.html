@@ -14,6 +14,7 @@
       font-family: 'Playfair Display', serif;
     }
 
+    /* NAVIGATION */
     nav {
       background-color: white;
       padding: 15px 30px;
@@ -24,29 +25,18 @@
       z-index: 1000;
       box-shadow: 0 2px 6px rgba(0,0,0,0.05);
       display: flex;
+      flex-direction: column;
+    }
+
+    .nav-header {
+      width: 100%;
+      display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
     }
 
-    nav img {
+    .nav-header img {
       height: 30px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 15px;
-      align-items: center;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: #4a6b48;
-      font-weight: 600;
-      font-size: 16px;
-      padding: 5px 10px;
     }
 
     .burger {
@@ -63,8 +53,26 @@
       transition: all 0.3s ease;
     }
 
+    .nav-links {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding-top: 10px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #4a6b48;
+      font-weight: 600;
+      font-size: 16px;
+      padding: 5px 10px;
+    }
+
+    /* CONTENU PRINCIPAL */
     .content {
-      padding: 100px 40px 60px;
+      padding: 110px 40px 60px;
       text-align: center;
     }
 
@@ -84,12 +92,11 @@
       margin: 0 auto;
       font-size: 18px;
       line-height: 1.6;
-      color: #4a6b48;
     }
 
     a.button {
       display: inline-block;
-      margin-top: 5px;
+      margin-top: 10px;
       padding: 8px 14px;
       background-color: #4a6b48;
       color: white;
@@ -102,9 +109,10 @@
       background-color: #b2765c;
     }
 
+    /* RESPONSIVE */
     @media screen and (max-width: 768px) {
       .burger {
-        display: flex;
+        display: flex !important;
       }
 
       .nav-links {
@@ -113,7 +121,12 @@
         flex-direction: column;
         align-items: center;
         background-color: white;
-        padding-bottom: 10px;
+        padding: 10px 0;
+      }
+
+      .nav-links.active {
+        display: flex;
+        animation: slideDown 0.3s ease-in-out;
       }
 
       .nav-links a {
@@ -123,19 +136,9 @@
         border-top: 1px solid #e0e0e0;
       }
 
-      .nav-links.active {
-        display: flex;
-        animation: slideDown 0.3s ease-in-out;
-      }
-
       @keyframes slideDown {
         from {opacity: 0; transform: translateY(-10px);}
         to {opacity: 1; transform: translateY(0);}
-      }
-
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
       }
     }
   </style>
@@ -143,7 +146,7 @@
 
 <body>
   <nav>
-    <div style="display: flex; align-items: center; gap: 10px;">
+    <div class="nav-header">
       <img src="bague.jpg" alt="Bagues entrelacées">
       <div class="burger" onclick="toggleMenu()">
         <div></div>
@@ -180,7 +183,8 @@
 
   <script>
     function toggleMenu() {
-      document.getElementById('navLinks').classList.toggle('active');
+      const menu = document.getElementById('navLinks');
+      menu.classList.toggle('active');
     }
   </script>
 </body>
