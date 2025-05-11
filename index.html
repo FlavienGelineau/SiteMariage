@@ -162,9 +162,10 @@
       color: #7a947a;
     }
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1000px) {
       .burger {
-        display: flex;
+        display: flex !important;
+        padding-right: 60px;
       }
 
       .nav-links {
@@ -191,24 +192,6 @@
       @keyframes slideDown {
         from {opacity: 0; transform: translateY(-10px);}
         to {opacity: 1; transform: translateY(0);}
-      }
-
-      .main {
-        flex-direction: column-reverse;
-        padding: 120px 15px 40px;
-      }
-
-      .right h1 {
-        font-size: 36px;
-      }
-
-      .right p,
-      .event-info {
-        font-size: 16px;
-      }
-
-      .countdown {
-        font-size: 18px;
       }
     }
   </style>

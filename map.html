@@ -14,7 +14,6 @@
       font-family: 'Playfair Display', serif;
     }
 
-    /* === NAVIGATION === */
     nav {
       background-color: white;
       padding: 15px 30px;
@@ -25,32 +24,20 @@
       z-index: 1000;
       box-shadow: 0 2px 6px rgba(0,0,0,0.05);
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
+      flex-direction: column;
     }
 
-    nav img {
+    .nav-header {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-header img {
       height: 30px;
     }
 
-    .nav-links {
-      display: flex;
-      gap: 15px;
-      align-items: center;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: #4a6b48;
-      font-weight: 600;
-      font-size: 16px;
-      padding: 5px 10px;
-    }
-
-    /* === BURGER === */
     .burger {
       display: none;
       flex-direction: column;
@@ -65,9 +52,25 @@
       transition: all 0.3s ease;
     }
 
-    /* === CONTENT === */
+    .nav-links {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding-top: 10px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #4a6b48;
+      font-weight: 600;
+      font-size: 16px;
+      padding: 5px 10px;
+    }
+
     .content {
-      padding: 100px 20px 60px;
+      padding: 120px 20px 60px;
       text-align: center;
     }
 
@@ -78,12 +81,15 @@
       margin-bottom: 20px;
     }
 
+    h3 {
+      margin-top: 40px;
+      font-size: 24px;
+    }
+
     h4 {
       font-size: 18px;
       font-style: italic;
-      margin-bottom: 50px;
-      margin-top: 30px;
-      text-align: center;
+      margin: 30px 0;
     }
 
     p, ul {
@@ -110,11 +116,10 @@
       width: 80%;
     }
 
-    /* === RESPONSIVE === */
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1000px) {
       .burger {
-        display: flex;
-        margin-right: 10px;
+        display: flex !important;
+        padding-right: 60px;
       }
 
       .nav-links {
@@ -123,7 +128,7 @@
         flex-direction: column;
         align-items: center;
         background-color: white;
-        padding-bottom: 15px;
+        padding-bottom: 10px;
       }
 
       .nav-links a {
@@ -143,19 +148,13 @@
         to {opacity: 1; transform: translateY(0);}
       }
 
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 15px 20px;
-      }
     }
   </style>
 </head>
-
 <body>
 
   <nav>
-    <div style="display: flex; align-items: center; gap: 10px;">
+    <div class="nav-header">
       <img src="bague.jpg" alt="Bagues entrelacées">
       <div class="burger" onclick="toggleMenu()">
         <div></div>
@@ -166,19 +165,18 @@
     <div class="nav-links" id="navLinks">
       <a href="index.html">Accueil</a>    
       <a href="histoire.html">Notre Histoire</a>
-      <a href="#map">Comment s'y rendre</a>
+      <a href="map.html">Comment s'y rendre</a>
       <a href="infos.html">Infos pratiques</a>
       <a href="hebergements.html">Hébergements</a>
       <a href="cagnotte.html">Cagnotte</a>
       <a href="galerie.html">Souvenirs et photos</a>
       <a href="contact.html">Contact</a>
     </div>
-  </nav> 
+  </nav>
 
   <div class="content">
     <h2>🗺️ Comment s’y rendre</h2>
-    <p>Notre mariage sera célébré à l'Église Saint Chrysole, à Verlinghem.
-    Voici toutes les informations pour venir nous rejoindre !</p>
+    <p>Notre mariage sera célébré à l'Église Saint Chrysole, à Verlinghem. Voici toutes les informations pour venir nous rejoindre !</p>
 
     <h4>Adresse de l’église :<br>
       <strong>Église Saint-Chrysole</strong><br>
@@ -208,10 +206,9 @@
     <hr>
 
     <h3>🥐 Brunch du lendemain</h3>
-    <p>
-      Nous serons ravis de vous retrouver le lendemain autour d’un brunch convivial pour prolonger les festivités !
-    </p>
-    <h4>Adresse du brunch :<br>
+    <p>Nous serons ravis de vous retrouver le lendemain autour d’un brunch convivial pour prolonger les festivités !</p>
+    <h4>
+      Adresse du brunch :<br>
       <strong>Domaine de la Chanterelle (C)</strong><br>
       Rue du Beau Rang, 59237 Verlinghem<br>
       À partir de 12h00
@@ -222,8 +219,7 @@
 
   <script>
     function toggleMenu() {
-      const navLinks = document.getElementById('navLinks');
-      navLinks.classList.toggle('active');
+      document.getElementById('navLinks').classList.toggle('active');
     }
   </script>
 

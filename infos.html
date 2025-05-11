@@ -135,9 +135,10 @@
       background-color: #b48e3e;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 1000px) {
       .burger {
-        display: flex;
+        display: flex !important;
+        padding-right: 60px;
       }
 
       .nav-links {
@@ -164,11 +165,6 @@
       @keyframes slideDown {
         from {opacity: 0; transform: translateY(-10px);}
         to {opacity: 1; transform: translateY(0);}
-      }
-
-      .content {
-        flex-direction: column;
-        padding: 120px 15px 40px;
       }
     }
   </style>
