@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Lise & Flavien - Mariage</title>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Parisienne&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Parisienne&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -23,9 +23,10 @@
       z-index: 1000;
       box-shadow: 0 2px 6px rgba(0,0,0,0.05);
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       justify-content: center;
-      gap: 20px;
+      gap: 15px;
     }
 
     nav img {
@@ -37,20 +38,20 @@
       text-decoration: none;
       color: #4a6b48;
       font-weight: 600;
+      font-size: 16px;
     }
 
     .main {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
       padding: 140px 40px 60px;
       gap: 40px;
-      position: relative;
     }
 
     .left {
-      flex: 1;
+      flex: 1 1 300px;
       max-width: 400px;
       border: 5px solid #c9a646;
       border-radius: 12px;
@@ -65,10 +66,11 @@
     }
 
     .right {
-      flex: 1;
+      flex: 1 1 300px;
       max-width: 500px;
       text-align: left;
     }
+
     .noms {
       font-family: 'Dancing Script', cursive;
       font-weight: 700;
@@ -80,8 +82,8 @@
       font-style: italic; 
       font-weight: 700;
       padding: 0 5px; 
-    
     }
+
     .right h1 {
       font-family: 'Dancing Script', cursive;
       font-size: 52px;
@@ -89,8 +91,8 @@
       margin-bottom: 10px;
       text-align: center;
       font-style: italic;
-  
     }
+
     .right p {
       font-size: 18px;
       margin-bottom: 20px;
@@ -130,6 +132,45 @@
       font-style: italic;
       color: #7a947a;
     }
+
+    @media screen and (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px;
+      }
+
+      nav a {
+        font-size: 14px;
+      }
+
+      .main {
+        flex-direction: column;
+        padding: 120px 20px 40px;
+      }
+
+      .right h1 {
+        font-size: 36px;
+      }
+
+      .right p,
+      .event-info {
+        font-size: 16px;
+        padding: 0 10px;
+      }
+
+      .event-info span {
+        margin: 6px 0;
+      }
+
+      .countdown {
+        font-size: 18px;
+      }
+
+      footer {
+        padding: 0 10px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -152,9 +193,9 @@
 
     <div class="right">
       <h1>
-        <span class="noms">Lise </span>
+        <span class="noms">Lise</span>
         <span class="esperluette">&amp;</span>
-        <span class="noms"> Flavien</span>
+        <span class="noms">Flavien</span>
       </h1>
       <p>C’est avec une immense joie que nous vous invitons à la célébration de notre mariage.</p>
 
@@ -165,7 +206,6 @@
       </div>
 
       <div class="countdown" id="countdown"></div>
-
     </div>
   </div>
 
@@ -186,6 +226,5 @@
     }
     countdown();
   </script>
-
 </body>
 </html>
